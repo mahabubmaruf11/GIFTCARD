@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exclusive Offer | Claim Your $50 Gift Card</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --accent: #f72585;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #4cc9f0;
+            --warning: #f8961e;
+            --danger: #ef233c;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+            line-height: 1.5;
+        }
+        
+        .card {
+            width: 100%;
+            max-width: 100%;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            margin: 10px 0;
+        }
+        
+        .card-header {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            padding: 20px 15px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card-header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
+            transform: rotate(30deg);
+        }
+        
+        .card-header h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            position: relative;
+        }
+        
+        .card-header p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            position: relative;
+        }
+        
+        .card-body {
+            padding: 20px 15px;
+        }
+        
+        .gift-card {
+            background: linear-gradient(to right, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
+            border-radius: 10px;
+            padding: 20px 15px;
+            text-align: center;
+            margin: 15px 0;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        
+        .gift-card::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 60%);
+        }
+        
+        .gift-card h2 {
+            font-size: 1.4rem;
+            color: var(--dark);
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .gift-card p {
+            color: #6c757d;
+            position: relative;
+            z-index: 1;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .gift-card img {
+            max-width: 180px;
+            width: 100%;
+            margin: 12px auto;
+            display: block;
+            border-radius: 6px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+        }
+        
+        .timer-container {
+            text-align: center;
+            margin: 25px 0;
+        }
+        
+        .timer-label {
+            font-size: 0.9rem;
+            color: #6c757d;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+        
+        .timer {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .timer-segment {
+            background: var(--dark);
+            color: white;
+            padding: 12px 15px;
+            border-radius: 6px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            min-width: 60px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timer-segment span {
+            display: block;
+            font-size: 0.7rem;
+            font-weight: 400;
+            opacity: 0.7;
+            margin-top: 3px;
+        }
+        
+        .cta-button {
+            display: block;
+            width: 100%;
+            background: linear-gradient(to right, var(--accent), #f72585c9);
+            color: white;
+            border: none;
+            padding: 16px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: center;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(247, 37, 133, 0.4);
+            margin: 25px 0;
+        }
+        
+        .cta-button:hover, .cta-button:active {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(247, 37, 133, 0.5);
+        }
+        
+        .benefits {
+            margin: 25px 0;
+        }
+        
+        .benefits h3 {
+            font-size: 1.2rem;
+            color: var(--dark);
+            margin-bottom: 12px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .benefits h3::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 3px;
+        }
+        
+        .benefits ul {
+            list-style: none;
+        }
+        
+        .benefits li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            font-size: 0.95rem;
+        }
+        
+        .benefits li:last-child {
+            border-bottom: none;
+        }
+        
+        .benefits li::before {
+            content: "✓";
+            display: inline-block;
+            color: var(--success);
+            font-weight: bold;
+            margin-right: 8px;
+            background: rgba(76, 201, 240, 0.1);
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 22px;
+            flex-shrink: 0;
+        }
+        
+        .disclaimer {
+            font-size: 0.7rem;
+            color: #adb5bd;
+            text-align: center;
+            margin-top: 15px;
+            line-height: 1.4;
+        }
+
+        /* Mobile-specific optimizations */
+        @media (max-width: 480px) {
+            .card-header {
+                padding: 18px 12px;
+            }
+            
+            .card-header h1 {
+                font-size: 1.3rem;
+            }
+            
+            .card-header p {
+                font-size: 0.9rem;
+            }
+            
+            .gift-card {
+                padding: 18px 12px;
+            }
+            
+            .gift-card h2 {
+                font-size: 1.3rem;
+            }
+            
+            .gift-card img {
+                max-width: 150px;
+            }
+            
+            .timer-segment {
+                font-size: 1.3rem;
+                min-width: 50px;
+                padding: 10px 12px;
+            }
+            
+            .cta-button {
+                padding: 14px;
+                font-size: 1rem;
+            }
+            
+            .benefits li {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Prevent zoom on input focus for mobile */
+        @media screen and (max-width: 767px) {
+            input, select, textarea {
+                font-size: 16px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="card-header">
+            <h1>EXCLUSIVE LIMITED TIME OFFER</h1>
+            <p>Complete your registration now and receive a FREE $50 Gift Card</p>
+        </div>
+        
+        <div class="card-body">
+            <div class="gift-card">
+                <h2>YOUR $50 GIFT CARD IS READY!</h2>
+                <img src="https://i.postimg.cc/vB9bHd8w/images-1.jpg" alt="$50 Gift Card">
+                <p>Redeemable at Amazon, Walmart, Target and more after quick verification</p>
+            </div>
+            
+            <div class="timer-container">
+                <div class="timer-label">OFFER EXPIRES IN:</div>
+                <div class="timer">
+                    <div class="timer-segment">
+                        <span id="minutes">05</span>
+                        <span>MINUTES</span>
+                    </div>
+                    <div class="timer-segment">
+                        <span id="seconds">00</span>
+                        <span>SECONDS</span>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="YOUR_CPA_OFFER_LINK" class="cta-button">CLAIM YOUR GIFT CARD NOW →</a>
+            
+            <div class="benefits">
+                <h3>Why Choose This Offer?</h3>
+                <ul>
+                    <li>No credit card or payment required</li>
+                    <li>Takes less than 2 minutes to complete</li>
+                    <li>Instant digital delivery via email</li>
+                    <li>Works with all major retailers</li>
+                    <li>100% free with no hidden fees</li>
+                </ul>
+            </div>
+            
+            <div class="disclaimer">
+                *Limited quantity available. Offer expires when timer reaches zero. Gift card redemption subject to terms and conditions. Must be 18+ to participate. This is a promotional offer and not a sale of goods or services.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 5-minute countdown timer
+        function startTimer(duration, displayMinutes, displaySeconds) {
+            let timer = duration, minutes, seconds;
+            const interval = setInterval(function () {
+                minutes = parseInt(timer / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                displayMinutes.textContent = minutes;
+                displaySeconds.textContent = seconds;
+
+                if (--timer < 0) {
+                    clearInterval(interval);
+                    // Show expired message
+                    document.querySelector('.timer-label').textContent = "OFFER HAS EXPIRED!";
+                    document.querySelector('.cta-button').textContent = "OFFER EXPIRED";
+                    document.querySelector('.cta-button').style.background = "#adb5bd";
+                    document.querySelector('.cta-button').style.boxShadow = "none";
+                    document.querySelector('.cta-button').style.pointerEvents = "none";
+                    document.querySelector('.cta-button').style.transform = "none";
+                }
+            }, 1000);
+        }
+
+        // Start timer when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            const fiveMinutes = 60 * 5; // 5 minutes in seconds
+            const displayMinutes = document.getElementById('minutes');
+            const displaySeconds = document.getElementById('seconds');
+            startTimer(fiveMinutes, displayMinutes, displaySeconds);
+        });
+
+        // Prevent form zoom on focus in mobile
+        document.addEventListener('touchstart', function() {}, true);
+    </script>
+</body>
+</html>
